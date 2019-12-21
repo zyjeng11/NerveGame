@@ -15,7 +15,7 @@ public class QuestionDAO {
         }
     }
     public Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nerve_game?charactorEncoding=utf-8", "root", "Shan1yaoo4");
+        return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nerve_game?charactorEncoding=utf-8", "root", "password");
     }
     public Question get(int id){
         Question q = null;
