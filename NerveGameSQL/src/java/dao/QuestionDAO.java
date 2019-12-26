@@ -9,24 +9,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 public class QuestionDAO {
-    public QuestionDAO(){
-        try{
+
+    public QuestionDAO() {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
-        }catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-    public Connection getConnection() throws SQLException{
+
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nerve_game?charactorEncoding=utf-8", "root", "Shan1yaoo4");
     }
+
     //取得全部資料
-    public List getList(){
+    public List getList() {
         List<Question> questions = new ArrayList<>();
-        try(Connection c = getConnection();  Statement s = c.createStatement();){
+        try (Connection c = getConnection(); Statement s = c.createStatement();) {
             String sql = "SELECT * FROM question";
             ResultSet rs = s.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 Question q = new Question();
                 q.id = rs.getInt("id");
                 q.question = rs.getString("question");
@@ -39,18 +43,19 @@ public class QuestionDAO {
                 q.answer7 = rs.getString("answer7");
                 questions.add(q);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return questions;
     }
+
     //取得資料(row)
-    public Question get(int id){
+    public Question get(int num) {
         Question q = null;
-        try(Connection c = getConnection();  Statement s = c.createStatement();){
-            String sql = "SELECT * FROM question WHERE ID= "+ id;
+        try (Connection c = getConnection(); Statement s = c.createStatement();) {
+            String sql = "SELECT * FROM question LIMIT " + num + ", 1";
             ResultSet rs = s.executeQuery(sql);
-            if(rs.next()){
+            if (rs.next()) {
                 q = new Question();
                 q.id = rs.getInt("id");
                 q.question = rs.getString("question");
@@ -62,38 +67,56 @@ public class QuestionDAO {
                 q.answer6 = rs.getString("answer6");
                 q.answer7 = rs.getString("answer7");
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return q;
-    }    
+    }
+
     //總共有幾行
-    public int getTotalRow(){
+    public int getTotalRow() {
         int r = 0;
-        try(Connection c = getConnection();
-                Statement s = c.createStatement();){
+        try (Connection c = getConnection();
+                Statement s = c.createStatement();) {
             String sql = "SELECT COUNT(id) FROM question";
             ResultSet rs = s.executeQuery(sql);
-            if(rs.next()){
+            if (rs.next()) {
                 r = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+    //這個id在第幾行
+    public int getRowNum(int id){
+        int r = 0;
+        try(Connection c = getConnection(); Statement s = c.createStatement();){
+            //這邊從0算起
+            String sql = "SELECT COUNT(*) FROM question WHERE id<" + id;
+            ResultSet rs = s.executeQuery(sql);
+            if(rs.next()){
+              r = rs.getInt(1);
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
         return r;
     }
+
     //刪除
-    public void delete(int id){        
-        try(Connection c = getConnection(); Statement s = c.createStatement();){
-            String sql = "DELETE FROM question WHERE id="+ id;
+    public void delete(int id) {
+        try (Connection c = getConnection(); Statement s = c.createStatement();) {
+            String sql = "DELETE FROM question WHERE id=" + id;
             s.execute(sql);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     //新增
-    public void add(Question q){
-        try(Connection c = getConnection();  Statement s = c.createStatement();){
+    public void add(Question q) {
+        try (Connection c = getConnection(); Statement s = c.createStatement();) {
             String sql = "INSERT INTO question VALUES(NULL,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, q.question);
@@ -104,10 +127,10 @@ public class QuestionDAO {
             ps.setString(6, q.answer5);
             ps.setString(7, q.answer6);
             ps.setString(8, q.answer7);
-            
+
             ps.execute();
             ps.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
