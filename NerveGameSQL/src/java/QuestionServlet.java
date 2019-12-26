@@ -21,12 +21,11 @@ public class QuestionServlet extends HttpServlet {
             pass = Integer.parseInt(request.getParameter("pass"));
         } catch (NumberFormatException e) {
         }
-
-        if ((start + pass) < 13) {
+        int r = new QuestionDAO().getTotalRow();
+        if ((start + pass) <= r) {
             Question q = new QuestionDAO().get(start + pass);
-            response.getWriter().write(q.question);
-            request.setAttribute("question", q);
-            request.getRequestDispatcher("question1.jsp").forward(request, response);
+            request.setAttribute("question", q);            
+            request.getRequestDispatcher("question.jsp").forward(request, response);
         }else{
             request.getRequestDispatcher("clear.jsp").forward(request, response);
         }
