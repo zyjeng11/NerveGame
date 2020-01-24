@@ -1,0 +1,178 @@
+body {
+    font-family: arial, 'PingFang TC', '微軟正黑體';
+    padding-top: 40px;
+    text-align: center;
+}
+p {
+    font-size: 40px;
+    text-align: center;
+}
+
+#myDIV {
+    background-color: #ddd;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.anser-zone {
+    font-size: 30px;
+    font-weight: bold;
+    color: #999;
+    border: 5px solid #fff;
+    background-color: #f1f1f1;
+    margin: 15px;
+    display: inline-block;
+    min-height: 80px;
+    min-width: 80px;
+    position: relative;
+    transition: 0.4s border-color ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.anser-zone[data-ans] {
+    color: #1a1a1a;
+}
+.anser-zone[data-ans=""].selected {
+    color: #fff;
+}
+
+.anser-zone.selected {
+    border: 5px solid #666;
+    background-color: #fff;
+}
+.anser-zone + .anser-zone::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #fff;
+    pointer-events: none;
+}
+
+#buttons {
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#buttons span {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 10px;
+    min-height: 80px;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#buttons span[data-cho=""]::before {
+    content: "清除答案";
+}
+#buttons span[data-cho=""] {
+    background-color: #f1f1f1;
+}
+#bt{
+    min-width: 120px;
+    min-height: 80px;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: arial, 'PingFang TC', '微軟正黑體';
+}
+#rightAns{
+    font-size: 30px;
+    width: 120px;
+    height: 40px;
+    background-color: #b3ffb3;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: -40px;
+}
+#wrongAns{
+    font-size: 30px;
+    min-width: 120px;
+    max-width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #ffcccc;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: -40px;
+}
+
+#next {
+    margin-top: 10px;
+    color: #4d9900;
+    border: 2px solid #4d9900;
+    text-decoration: none;
+    padding: 11px 13px;
+    font-weight: bold;
+    font-size: 26px;
+    display: inline-block;
+}
+#next::after {
+    content: '';
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #4d9900;
+    width: 0;
+    height: 0;
+    display: inline-block;
+    margin-left: 9px;
+}
+
+/* fin page */
+
+.fin-page div {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #4d9900;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fin-page ol {
+    text-align: left;
+    list-style-type: none;
+}
+.fin-page li {
+    margin: 10px 0;
+    text-align: center;
+}
+.fin-page a {
+    text-align: left;
+    color: #1a1a1a;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #efefef;
+    padding: 7px 20px;
+    width: 500px;
+    display: inline-block;
+    border-radius: 20px;
+}
+.fin-page p {
+    font-size: 30px;
+}
