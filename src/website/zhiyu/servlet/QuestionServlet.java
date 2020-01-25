@@ -17,13 +17,13 @@ public class QuestionServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int row = 0; //ç¬?1é¡Œæ˜¯row 0
-        //å¾žä?Šä?é¡Œå‚³ä¾†ç??
+        int row = 1;
+        //±q¤W¤@ÃD¶Ç¨Óªº
         try {
             row = Integer.parseInt(request.getParameter("row"));
         } catch (NumberFormatException e) {}        
         
-        //å¾žclear.jsp??Žä?†ç??
+        //±q clear.jsp ¨Óªº
         int id = 0;
         try{
             id = Integer.parseInt(request.getParameter("id"));

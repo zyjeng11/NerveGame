@@ -9,7 +9,7 @@
     </head>
     
     <body>        
-        <form action="EditQuestion" method="post">
+        <form action="edit" method="post">
             <% int id = Integer.parseInt(request.getParameter("id")); 
                Question q = new QuestionDAO().getQuestionById(id);                
             %>                        

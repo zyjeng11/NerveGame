@@ -11,13 +11,13 @@ import bean.Question;
 
 @WebServlet(urlPatterns = {"/add"})
 public class AddQuestion extends HttpServlet {
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         //取得最後一行的id
-        int row = new QuestionDAO().getTotalRow();
-        Question lastQ = new QuestionDAO().getQuestionByRow(row);
+        int row = new QuestionDAO().getTotalRow(); 
+        Question lastQ = new QuestionDAO().getQuestionByRow(row);        
         int lastId = lastQ.id;
         
         //要加入的題目

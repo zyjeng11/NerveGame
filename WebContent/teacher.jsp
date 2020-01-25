@@ -36,9 +36,9 @@
             <td>${q.answer5}</td>
             <td>${q.answer6}</td>
             <td>${q.answer7}</td>
-            <td><a href="DeleteQuestion?id=${q.id}">delete</a></td>
+            <td><a href="delete?id=${q.id}">delete</a></td>
             <td><a href="updateQuestion.jsp?id=${q.id}">edit</a></td>
-            <td><a href="UpServlet?id=${q.id}">up</td>
+            <td><a href="up?id=${q.id}">up</td>
         </tr>
     </c:forEach>
         <tr>

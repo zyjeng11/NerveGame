@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/edit"})
 public class EditQuestion extends HttpServlet {
 
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         new QuestionDAO().delete(id);
