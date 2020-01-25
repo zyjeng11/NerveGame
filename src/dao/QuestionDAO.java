@@ -108,7 +108,7 @@ public class QuestionDAO {
     public Question getQuestionByRow(int num) {
         Question q = null;
         try (Connection c = getConnection(); Statement s = c.createStatement();) {
-            String sql = "SELECT * FROM question LIMIT " + num + ", 1";
+            String sql = "SELECT * FROM question LIMIT " + (num-1) + ", 1";
             ResultSet rs = s.executeQuery(sql);
             if (rs.next()) {
                 q = new Question();
@@ -192,26 +192,6 @@ public class QuestionDAO {
         }
     }
     
-    //add row at the end
-    public void addLast(Question q){
-        try (Connection c = getConnection(); Statement s = c.createStatement();) {
-            String sql = "INSERT INTO question VALUES(NULL,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, q.question);
-            ps.setString(2, q.answer1);
-            ps.setString(3, q.answer2);
-            ps.setString(4, q.answer3);
-            ps.setString(5, q.answer4);
-            ps.setString(6, q.answer5);
-            ps.setString(7, q.answer6);
-            ps.setString(8, q.answer7);
-
-            ps.execute();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     //把順序往前
     public void rowUpward(int id) {
     	try(Connection c = getConnection();  Statement s = c.createStatement()){
@@ -233,5 +213,4 @@ public class QuestionDAO {
     		e.printStackTrace();
     	}
     }
-
 }
