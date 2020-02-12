@@ -42,7 +42,7 @@
         <div id="wrongAns">答錯了，再試試看</div>
         <button id="bt">對答案</button>
         
-        <a href="QuestionServlet?row=${next}" id="next">下一題</a>   
+        <a href="question?row=${next}" id="next">下一題</a>   
 
         <script>
             $("#next").hide();

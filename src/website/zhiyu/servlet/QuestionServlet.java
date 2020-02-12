@@ -11,7 +11,7 @@ import bean.Question;
 import dao.QuestionDAO;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/QuestionServlet"})
+@WebServlet(urlPatterns = {"/question"})
 public class QuestionServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response)

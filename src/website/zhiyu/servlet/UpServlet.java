@@ -15,6 +15,6 @@ public class UpServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		new QuestionDAO().rowUpward(id);
-		response.sendRedirect("editer");
+		response.sendRedirect("editor");
 	}
 }

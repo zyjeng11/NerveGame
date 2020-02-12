@@ -30,6 +30,6 @@ public class EditQuestion extends HttpServlet {
         q.answer7 = request.getParameter("answer7");
         new QuestionDAO().addById(q);
         
-        response.sendRedirect("editer");
+        response.sendRedirect("editor");
     }     
 }

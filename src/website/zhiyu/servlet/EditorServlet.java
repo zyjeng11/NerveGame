@@ -10,8 +10,8 @@ import dao.QuestionDAO;
 import bean.Question;
 import java.util.*;
 
-@WebServlet(urlPatterns = {"/editer"})
-public class EditerServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/editor"})
+public class EditorServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

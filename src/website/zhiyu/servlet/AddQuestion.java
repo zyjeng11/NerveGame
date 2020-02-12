@@ -33,7 +33,7 @@ public class AddQuestion extends HttpServlet {
         q.answer7 = (String)request.getParameter("answer7");
         new QuestionDAO().addById(q);
         
-        response.sendRedirect("editer");
+        response.sendRedirect("editor");
     }   
 
 }

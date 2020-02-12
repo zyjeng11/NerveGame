@@ -17,6 +17,6 @@ public class DeleteQuestion extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         QuestionDAO qdao = new QuestionDAO();
         qdao.delete(id);        
-        response.sendRedirect("editer");
+        response.sendRedirect("editor");
     }
 }
